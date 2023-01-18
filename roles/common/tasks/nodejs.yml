@@ -31,7 +31,7 @@
     path: /app
     state: latest
 
-- name: Copy Catalogue Service File to Catalogue
+- name: Copy {{component}} Service File
   ansible.builtin.copy:
     src: "{{component}}".service
     dest: /etc/systemd/system/{{component}}.service
