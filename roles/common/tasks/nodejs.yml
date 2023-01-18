@@ -33,7 +33,7 @@
 
 - name: Copy {{component}} Service File
   ansible.builtin.copy:
-    src: "{{component}}".service
+    src: "{{component}}.service"
     dest: /etc/systemd/system/{{component}}.service
 # since value is starting with variable we use double quote
 
