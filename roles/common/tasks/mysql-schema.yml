@@ -1,15 +1,17 @@
-- name: Copy Mongodb Yum Repo File
-  ansible.builtin.copy:
-    src: mysql.repo
-    dest: /etc/yum.repos.d/mysql.repo
-
-- name: Install Mongodb
+- name: Install Python
   ansible.builtin.yum:
-    name: mysql-client
-    state: installed
+    name:
+    - python3-pyMySQl
+    - mysql
+  state: installed
 
-- name: Load Schema
-  community.mongodb.mongodb_shell:
-    login_host: mongodb-dev.raviteja.online
-    file: "/app/schema/{{component}}.js"
-    idempotent: yes
+- name: Load Mysql Schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /app/schema/{{component}}.sql
+    login_host: mysql-dev.raviteja.online
+    login_user: root
+    login_password: "{{ root_mysql_password }}"
+
+
