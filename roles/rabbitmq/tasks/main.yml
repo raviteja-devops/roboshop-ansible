@@ -1,23 +1,14 @@
-- name: Configure Yum Repo For Erlang
-  ansible.builtin.yum:
-    name: https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
-    state: installed
-    disable_gpg_check: true
+- name: Configure Yum Repos
+  ansible.builtin.shell: curl -s {{ item }} | bash
+  loop:
+    - https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh
+    - https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
 
-- name: Install Erlang
+- name: Install Packages
   ansible.builtin.yum:
-    name: erlang
-    state: installed
-
-- name: Configure Yum Repo For RabbitMQ
-  ansible.builtin.yum:
-    name: https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
-    state: installed
-    disable_gpg_check: true
-
-- name: Install Erlang
-  ansible.builtin.yum:
-    name: rabbitmq-server
+    name:
+      - erlang
+      - rabbitmq-server
     state: installed
 
 - name: Start RabbitMQ Service
@@ -25,3 +16,14 @@
     name: rabbitmq-server
     state: restarted
     enabled: yes
+
+- name: Add User
+  community.rabbitmq.rabbitmq_user:
+    user: roboshop
+    password: "{{roboshop_rabbitmq_password}}"
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+    tags: administrator
