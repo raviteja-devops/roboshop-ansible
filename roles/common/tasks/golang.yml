@@ -7,9 +7,7 @@
   ansible.builtin.include_tasks: "app-prereq.yml"
 
 - name: Install GoLang Dependencies
-  community.general.npm:
-    path: /app
-    state: latest
+  ansible.builtin.shell: cd /app ; go mod init dispatch ; go get ; go build
 
 - name: App PreReq
   ansible.builtin.include_tasks: "systemd.yml"
