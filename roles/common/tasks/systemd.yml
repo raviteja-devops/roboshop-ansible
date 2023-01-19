@@ -1,7 +1,10 @@
 - name: Copy {{component}} Service File
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: "{{component}}.service"
     dest: /etc/systemd/system/{{component}}.service
+# template module while it can copy the file as well as replace the variables if needed
+# in payment.service file we need to replace roboshop_rabbitmq_password with password variable
+# in remaining tasks it copy service file to specified path
 
 - name: Start {{component}} Service
   ansible.builtin.systemd:
