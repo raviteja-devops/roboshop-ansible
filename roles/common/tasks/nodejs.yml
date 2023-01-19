@@ -14,7 +14,7 @@
     path: /app
     state: latest
 
-- name: App PreReq
+- name: Setting Systemd
   ansible.builtin.include_tasks: "systemd.yml"
 
 - name: Load Schema
