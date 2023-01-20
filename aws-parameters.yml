@@ -38,3 +38,6 @@
         string_type: "SecureString"
       loop:
         - { name: "dev.payment.AMQP_PASS", value: "roboshop123" }
+
+# create ssm parameter ansible; redirect to the community.aws.ssm_parameter module
+# run command to use ssm_parameter module:  ansible-galaxy collection install community.aws
