@@ -44,3 +44,6 @@
 
 # create ssm parameter ansible; redirect to the community.aws.ssm_parameter module
 # run command to use ssm_parameter module:  ansible-galaxy collection install community.aws
+# Install Ansible Packages In Particular Server Where We run Jenkins Job,
+# yum install python39-devel -y
+# pip3.9 install ansible botocore boto3
