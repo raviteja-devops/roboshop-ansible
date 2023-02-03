@@ -25,8 +25,8 @@
     dest: /usr/share/nginx/html
     remote_src: yes
   vars:
-    nexus_user: "{{ lookup('aws_ssm', 'nexus.user', region='us-east-1' ) }}"
-    nexus_pass: "{{ lookup('aws_ssm', 'nexus.pass', region='us-east-1' ) }}"
+    nexus_user: {{ lookup('aws_ssm', 'nexus.user', region='us-east-1' ) }}
+    nexus_pass: {{ lookup('aws_ssm', 'nexus.pass', region='us-east-1' ) }}
 
 - name: Copy RoboShopConf File to nginx
   ansible.builtin.template:
