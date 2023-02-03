@@ -28,6 +28,7 @@
     nexus_user: "{{ lookup('aws_ssm', 'nexus.user', region='us-east-1' ) }}"
     nexus_pass: "{{ lookup('aws_ssm', 'nexus.pass', region='us-east-1' ) }}"
 
+
 - name: Copy RoboShopConf File to nginx
   ansible.builtin.template:
     src: roboshop.conf
@@ -36,6 +37,7 @@
 - name: Start nginx Service
   ansible.builtin.systemd:
     name: nginx
-    enabled: yes
     state: restarted
+    enabled: yes
+
 
