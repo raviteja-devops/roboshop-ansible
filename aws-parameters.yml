@@ -46,6 +46,8 @@
         - {name: "dev.mysql.DB_ADMIN_PASS", value: "RoboShop@1" }
         - {name: "dev.docdb.DB_ADMIN_USER", value: "admin1" }
         - {name: "dev.docdb.DB_ADMIN_PASS", value: "RoboShop123" }
+        - {name: "dev.rds.DB_ADMIN_USER", value: "admin1" }
+        - {name: "dev.rds.DB_ADMIN_PASS", value: "RoboShop123" }
 
 # create ssm parameter ansible; redirect to the community.aws.ssm_parameter module
 # run command to use ssm_parameter module:  ansible-galaxy collection install community.aws
