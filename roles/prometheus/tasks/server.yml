@@ -1,0 +1,14 @@
+- name: Copy Prometheus Config
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /opt/prometheus/prometheus.yml
+  vars:
+    labels:
+      - { tag: "env", label: "environment" }
+      - { tag: "Name", label: "name" }
+
+
+- name: Restart Prometheus
+  ansible.builtin.systemd:
+    name: prometheus
+    state: restarted
