@@ -52,6 +52,8 @@
         - {name: "dev.rabbitmq.USER", value: "roboshop" }
         - {name: "dev.rabbitmq.PASS", value: "roboshop1234" }
         - {name: "grafana.api_key", value: "eyJrIjoiOXBPYjU5M1NkeXhXVTVhZDBLU0V0MEVNTmdXTUZuUzAiLCJuIjoiY2xpIiwiaWQiOjF9" }
+        - {name: "dev.ssh.user", value: "centos" }
+        - {name: "dev.ssh.pass", value: "DevOps321" }
 
 # create ssm parameter ansible; redirect to the community.aws.ssm_parameter module
 # run command to use ssm_parameter module:  ansible-galaxy collection install community.aws
