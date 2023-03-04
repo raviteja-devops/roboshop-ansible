@@ -10,7 +10,10 @@
     dest: /tmp/alert.yml
 
 - name: Copy Prometheus Alerts Configuration to Prometheus Server
-  ansible.builtin.shell: sshpass -p {{ lookup('aws_ssm', '{{env}}.ssh.user', region='us-east-1' ) }} scp /tmp/alert.yml {{ lookup('aws_ssm', '{{env}}.ssh.pass', region='us-east-1' ) }}@172.31.4.226:/opt/prometheus/alerts/{{component}}.yml
+  ansible.builtin.shell: sshpass -p {{ lookup('aws_ssm', '{{env}}.ssh.pass', region='us-east-1' ) }} scp /tmp/alert.yml {{ lookup('aws_ssm', '{{env}}.ssh.user', region='us-east-1' ) }}@172.31.4.226:/opt/prometheus/alerts/{{component}}.yml
+
+- name: Reload Prometheus
+  ansible.builtin.shell: curl -v -s -XPOST http://172.31.4.226:9090/-/reload
 
 - name: Make Template
   ansible.builtin.template:
