@@ -32,6 +32,31 @@
         - { name: "dev.dispatch.AMQP_HOST", value: "rabbitmq-dev.raviteja.online" }
         - { name: "dev.dispatch.AMQP_USER", value: "roboshop" }
 
+# prod
+        - { name: "prod.cart.REDIS_HOST", value: "redis-prod.raviteja.online" }
+        - { name: "prod.cart.CATALOGUE_HOST", value: "catalogue-prod.raviteja.online" }
+        - { name: "prod.catalogue.MONGO", value: "true" }
+        - { name: "prod.catalogue.MONGO_URL", value: "mongodb://mongodb-prod.raviteja.online:27017/catalogue" }
+        - { name: "prod.catalogue.MONGO_URL", value: "mongodb://mongodb-prod.raviteja.online:27017/catalogue" }
+        - { name: "prod.frontend.CATALOGUE_URL", value: "http://catalogue-prod.raviteja.online:80/" }
+        - { name: "prod.frontend.USER_URL", value: "http://user-prod.raviteja.online:80/" }
+        - { name: "prod.frontend.CART_URL", value: "http://cart-prod.raviteja.online:80/" }
+        - { name: "prod.frontend.SHIPPING_URL", value: "http://shipping-prod.raviteja.online:80/" }
+        - { name: "prod.frontend.PAYMENT_URL", value: "http://payment-prod.raviteja.online:80/" }
+        - { name: "prod.payment.CART_HOST", value: "cart-prod.raviteja.online" }
+        - { name: "prod.payment.CART_PORT", value: "80" }
+        - { name: "prod.payment.USER_HOST", value: "user-prod.raviteja.online" }
+        - { name: "prod.payment.USER_PORT", value: "80" }
+        - { name: "prod.payment.AMQP_HOST", value: "rabbitmq-prod.raviteja.online" }
+        - { name: "prod.payment.AMQP_USER", value: "roboshop" }
+        - { name: "prod.shipping.CART_ENDPOINT", value: "cart-prod.raviteja.online:80" }
+        - { name: "prod.shipping.DB_HOST", value: "mysql-prod.raviteja.online" }
+        - { name: "prod.user.MONGO", value: "true" }
+        - { name: "prod.user.REDIS_HOST", value: "redis-prod.raviteja.online" }
+        - { name: "prod.user.MONGO_URL", value: "mongodb://mongodb-prod.raviteja.online:27017/users" }
+        - { name: "prod.dispatch.AMQP_HOST", value: "rabbitmq-prod.raviteja.online" }
+        - { name: "prod.dispatch.AMQP_USER", value: "roboshop" }
+
 
     - name: Create Secrets
       community.aws.aws_ssm_parameter_store:
@@ -40,9 +65,9 @@
         region: us-east-1
         string_type: "SecureString"
       loop:
-        - { name: "dev.payment.AMQP_PASS", value: "roboshop123" }
+        - {name: "dev.payment.AMQP_PASS", value: "roboshop123" }
         - {name: "dev.rabbitmq.AMQP_PASS", value: "roboshop123" }
-        - { name: "dev.dispatch.AMQP_PASS", value: "roboshop123" }
+        - {name: "dev.dispatch.AMQP_PASS", value: "roboshop123" }
         - {name: "dev.mysql.DB_ADMIN_USER", value: "root" }
         - {name: "dev.mysql.DB_ADMIN_PASS", value: "RoboShop@1" }
         - {name: "dev.docdb.DB_ADMIN_USER", value: "admin1" }
@@ -54,6 +79,24 @@
         - {name: "grafana.api_key", value: "eyJrIjoiOXBPYjU5M1NkeXhXVTVhZDBLU0V0MEVNTmdXTUZuUzAiLCJuIjoiY2xpIiwiaWQiOjF9" }
         - {name: "dev.ssh.user", value: "centos" }
         - {name: "dev.ssh.pass", value: "DevOps321" }
+
+
+        - {name: "prod.payment.AMQP_PASS", value: "roboshop123" }
+        - {name: "prod.rabbitmq.AMQP_PASS", value: "roboshop123" }
+        - {name: "prod.dispatch.AMQP_PASS", value: "roboshop123" }
+        - {name: "prod.mysql.DB_ADMIN_USER", value: "root" }
+        - {name: "prod.mysql.DB_ADMIN_PASS", value: "RoboShop@1" }
+        - {name: "prod.docdb.DB_ADMIN_USER", value: "admin1" }
+        - {name: "prod.docdb.DB_ADMIN_PASS", value: "RoboShop123" }
+        - {name: "prod.rds.DB_ADMIN_USER", value: "admin1" }
+        - {name: "prod.rds.DB_ADMIN_PASS", value: "RoboShop123" }
+        - {name: "prod.rabbitmq.USER", value: "roboshop" }
+        - {name: "prod.rabbitmq.PASS", value: "roboshop1234" }
+        - {name: "grafana.api_key", value: "eyJrIjoiOXBPYjU5M1NkeXhXVTVhZDBLU0V0MEVNTmdXTUZuUzAiLCJuIjoiY2xpIiwiaWQiOjF9" }
+        - {name: "prod.ssh.user", value: "centos" }
+        - {name: "prod.ssh.pass", value: "prodOps321" }
+
+
 
 # create ssm parameter ansible; redirect to the community.aws.ssm_parameter module
 # run command to use ssm_parameter module:  ansible-galaxy collection install community.aws
