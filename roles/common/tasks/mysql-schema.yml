@@ -24,4 +24,6 @@
     login_host: "{{ lookup('aws_ssm', '{{env}}.rds.ENDPOINT', region='us-east-1' ) }}"
     login_user: "{{ lookup('aws_ssm', '{{env}}.rds.DB_ADMIN_USER', region='us-east-1' ) }}"
     login_password: "{{ lookup('aws_ssm', '{{env}}.rds.DB_ADMIN_PASS', region='us-east-1' ) }}"
+  when: "'cities' not in out.databases"
+
 
