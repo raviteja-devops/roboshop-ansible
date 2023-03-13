@@ -79,6 +79,7 @@
         - {name: "grafana.api_key", value: "eyJrIjoiOXBPYjU5M1NkeXhXVTVhZDBLU0V0MEVNTmdXTUZuUzAiLCJuIjoiY2xpIiwiaWQiOjF9" }
         - {name: "dev.ssh.user", value: "centos" }
         - {name: "dev.ssh.pass", value: "DevOps321" }
+        - {name: "prod.shipping.APP_VERSION", value: "1.0.0" }
 
 
         - {name: "prod.payment.AMQP_PASS", value: "roboshop123" }
