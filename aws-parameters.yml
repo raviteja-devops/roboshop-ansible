@@ -95,8 +95,16 @@
         - {name: "prod.rabbitmq.PASS", value: "roboshop1234" }
         - {name: "grafana.api_key", value: "eyJrIjoiOXBPYjU5M1NkeXhXVTVhZDBLU0V0MEVNTmdXTUZuUzAiLCJuIjoiY2xpIiwiaWQiOjF9" }
         - {name: "prod.ssh.user", value: "centos" }
-        - {name: "prod.ssh.pass", value: "prodOps321" }
+        - {name: "prod.ssh.pass", value: "DevOps321" }
 
+
+        ## App versions to deploy
+        - {name: "prod.cart.APP_VERSION", value: "1.0.0" }
+        - {name: "prod.catalogue.APP_VERSION", value: "1.0.2" }
+        - {name: "prod.frontend.APP_VERSION", value: "1.0.0" }
+        - {name: "prod.payment.APP_VERSION", value: "1.0.0" }
+        - {name: "prod.shipping.APP_VERSION", value: "1.0.0" }
+        - {name: "prod.user.APP_VERSION", value: "1.0.1" }
 
 
 # create ssm parameter ansible; redirect to the community.aws.ssm_parameter module
